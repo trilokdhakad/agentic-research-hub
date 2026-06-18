@@ -1,30 +1,33 @@
-# 🧠 Agentic Research Hub
+# Agentic Research Hub
 
 An Agentic Retrieval-Augmented Generation (RAG) system built using **LangGraph**, **FastAPI**, **React**, **ChromaDB**, and **Ollama**.
 
-The system allows users to upload PDF and TXT documents, generate embeddings, store them in a vector database, extract document-level intelligence, and query the knowledge base through a multi-agent workflow. Unlike traditional RAG systems that directly retrieve and generate responses, this project introduces a planning layer that helps guide document retrieval before answer generation.
+The system allows users to upload PDF and TXT documents, automatically extract document intelligence (title, summary, and keywords), generate embeddings, store semantic representations in ChromaDB, and query the knowledge base through a metadata-aware multi-agent workflow.
+
+Unlike traditional RAG systems that directly retrieve and generate responses, this project introduces a planning layer that helps guide retrieval before answer generation. The retrieval pipeline combines document-level intelligence with chunk-level semantic search, enabling both high-level understanding and fact-grounded question answering.
 
 ---
 
 # ✨ Features
 
-### 📄 Document Management
+## 📄 Document Management
 
 * Upload PDF and TXT documents
-* Automatic chunking and embedding generation
+* Automatic text chunking and embedding generation
 * Duplicate document protection
 * Document deletion from the knowledge base
 * Indexed document dashboard with chunk statistics
 
-### 🧠 Agentic RAG Pipeline
+## 🧠 Agentic RAG Pipeline
 
-* Planner Agent generates a retrieval strategy
-* Retriever fetches relevant chunks from ChromaDB
+* Planner Agent generates retrieval goals and key concepts
+* Semantic Retriever fetches relevant chunks from ChromaDB
+* Metadata Enrichment Layer injects document intelligence
 * Writer Agent synthesizes grounded responses
 * Source attribution for every answer
 * Built using LangGraph state-driven workflows
 
-### 🔍 Document Intelligence
+## 🔍 Document Intelligence
 
 * Automatic metadata extraction during upload
 * Title generation
@@ -33,7 +36,7 @@ The system allows users to upload PDF and TXT documents, generate embeddings, st
 * Metadata persistence and retrieval
 * Interactive metadata viewer in the frontend
 
-### 💻 Fully Local AI Stack
+## 💻 Fully Local AI Stack
 
 * Local LLM execution using Ollama
 * Local vector database using ChromaDB
@@ -45,26 +48,92 @@ The system allows users to upload PDF and TXT documents, generate embeddings, st
 # 🏗️ Architecture
 
 ```text
-User
- │
- ▼
-React Frontend
- │
- ▼
-FastAPI Backend
- │
- ├── Document Processing
- │      ├── PDF/TXT Loader
- │      ├── Text Chunking
- │      └── Metadata Extraction
- │
- ├── ChromaDB Vector Store
- │
- └── LangGraph Workflow
-        │
-        ├── Planner Agent
-        ├── Retriever
-        └── Writer Agent
+                    ┌────────────────────┐
+                    │ PDF / TXT Document │
+                    └─────────┬──────────┘
+                              │
+                              ▼
+                    ┌────────────────────┐
+                    │ Document Loader    │
+                    └─────────┬──────────┘
+                              │
+                              ▼
+                    ┌────────────────────┐
+                    │ Text Chunking      │
+                    └─────────┬──────────┘
+                              │
+             ┌────────────────┴──────────────┐
+             ▼                               ▼
+
+┌────────────────────┐          ┌────────────────────┐
+│ Metadata Extractor │          │ Embedding Model    │
+│ Gemma 2B           │          │ MiniLM-L6-v2       │
+└─────────┬──────────┘          └─────────┬──────────┘
+          │                               │
+          ▼                               ▼
+
+┌────────────────────┐          ┌────────────────────┐
+│ Metadata Store     │          │ ChromaDB           │
+└────────────────────┘          └─────────┬──────────┘
+                                           │
+                                           ▼
+
+                              ┌────────────────────┐
+                              │ User Question      │
+                              └─────────┬──────────┘
+                                        │
+                                        ▼
+
+                              ┌────────────────────┐
+                              │ Planner Agent      │
+                              └─────────┬──────────┘
+                                        │
+                                        ▼
+
+                              ┌────────────────────┐
+                              │ Semantic Retriever │
+                              └─────────┬──────────┘
+                                        │
+                                        ▼
+
+                              ┌────────────────────┐
+                              │ Metadata Enrichment│
+                              └─────────┬──────────┘
+                                        │
+                                        ▼
+
+                              ┌────────────────────┐
+                              │ Writer Agent       │
+                              └─────────┬──────────┘
+                                        │
+                                        ▼
+
+                              ┌────────────────────┐
+                              │ Final Answer       │
+                              └────────────────────┘
+```
+
+---
+
+# 🧠 Multi-Agent Workflow
+
+```text
+Question
+    │
+    ▼
+Planner Agent
+    │
+    ▼
+Semantic Retrieval
+    │
+    ▼
+Metadata Enrichment
+    │
+    ▼
+Writer Agent
+    │
+    ▼
+Answer + Sources + Strategy
 ```
 
 ---
@@ -96,7 +165,7 @@ FastAPI Backend
 
 ## Embeddings
 
-* HuggingFace
+* HuggingFace Sentence Transformers
 * all-MiniLM-L6-v2
 
 ---
@@ -104,7 +173,7 @@ FastAPI Backend
 # 📂 Project Structure
 
 ```text
-Agentic-Research-Hub/
+agentic-research-hub/
 │
 ├── backend/
 │   ├── main.py
@@ -123,6 +192,8 @@ Agentic-Research-Hub/
 │   ├── public/
 │   ├── package.json
 │   └── vite.config.js
+│
+├── screenshots/
 │
 ├── README.md
 └── .gitignore
@@ -180,7 +251,7 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-Backend runs on:
+Backend:
 
 ```text
 http://localhost:8000
@@ -198,7 +269,7 @@ npm install
 npm run dev
 ```
 
-Frontend runs on:
+Frontend:
 
 ```text
 http://localhost:5173
@@ -208,13 +279,13 @@ http://localhost:5173
 
 # 🔄 Workflow
 
-### Upload Phase
+## Upload Phase
 
 ```text
 Document
     │
     ▼
-Loader
+Document Loader
     │
     ▼
 Chunking
@@ -227,7 +298,7 @@ Chunking
         ChromaDB
 ```
 
-### Question Answering Phase
+## Question Answering Phase
 
 ```text
 Question
@@ -237,6 +308,9 @@ Planner Agent
     │
     ▼
 Retriever
+    │
+    ▼
+Metadata Enrichment
     │
     ▼
 Writer Agent
@@ -249,19 +323,23 @@ Answer + Sources
 
 # 🎯 Challenges Solved
 
-### Multi-Agent Coordination
+## Multi-Agent Coordination
 
 Implemented a LangGraph workflow where separate agents perform planning, retrieval, and response generation while sharing a common state.
 
-### Metadata Extraction from Local Models
+## Metadata-Aware Retrieval
+
+Combined document-level intelligence (title and summary) with chunk-level semantic retrieval, improving high-level document understanding while preserving factual grounding.
+
+## Metadata Extraction from Local Models
 
 Built a metadata extraction pipeline capable of generating document summaries and keywords using a lightweight local LLM.
 
-### Duplicate Document Handling
+## Duplicate Document Handling
 
 Prevented duplicate embeddings and duplicate storage by validating uploaded documents before indexing.
 
-### Local-First Architecture
+## Local-First Architecture
 
 Designed the system to run entirely on local hardware without requiring cloud-hosted LLM APIs.
 
@@ -269,33 +347,44 @@ Designed the system to run entirely on local hardware without requiring cloud-ho
 
 # 🔮 Future Improvements
 
-* Intent classification and intelligent routing
-* Hybrid search (semantic + keyword retrieval)
-* Conversation memory
-* Streaming responses
-* Multi-document comparison
-* Citation highlighting
-* Docker deployment
+* Hybrid Retrieval (Vector + BM25)
+* Cross-Encoder Reranking
+* Conversational Memory
+* Multi-Document Reasoning
+* Citation Highlighting
+* Streaming Responses
+* Dockerized Deployment
+* Cloud-Hosted LLM Backend Option
 
 ---
 
 # 📸 Screenshots
 
-Add screenshots of:
+## Knowledge Base & Document Management
 
-1. Knowledge Base & Document Management
-2. Document Intelligence Metadata Viewer
-3. Multi-Agent RAG Workflow
-4. System Architecture
+![Knowledge Base](screenshots/knowledge-base.png)
+
+## Document Intelligence
+
+![Document Intelligence](screenshots/document-intelligence.png)
+
+## Planner Agent & Answer Generation
+
+![Planner Output](screenshots/planner-and-answer/planner-and-answer1.png)
+
+## System Architecture
+
+![Architecture](screenshots/architecture.png)
 
 ---
 
 # 👨‍💻 Author
 
-Built as a project to explore:
+Built to explore:
 
 * Agentic AI Systems
 * Retrieval-Augmented Generation (RAG)
 * LangGraph Workflows
 * Local LLM Deployment
 * Document Intelligence Systems
+* Metadata-Aware Retrieval
