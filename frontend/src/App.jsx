@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import ReactMarkdown from "react-markdown"
 import {
   Upload,
   Send,
@@ -135,8 +136,8 @@ export default function App() {
               type="submit"
               disabled={uploadStatus === 'uploading'}
               className={`px-6 py-2 rounded font-semibold transition-colors ${uploadStatus === 'uploading' ? 'bg-gray-600 cursor-not-allowed' :
-                  uploadStatus === 'success' ? 'bg-green-600 hover:bg-green-700' :
-                    'bg-blue-600 hover:bg-blue-700'
+                uploadStatus === 'success' ? 'bg-green-600 hover:bg-green-700' :
+                  'bg-blue-600 hover:bg-blue-700'
                 }`}
             >
               {uploadStatus === 'uploading' ? 'Processing...' :
@@ -160,9 +161,8 @@ export default function App() {
                   <div
                     key={doc.name}
                     onClick={() => fetchMetadata(doc.name)}
-                    className={`flex justify-between items-center px-3 py-3 rounded cursor-pointer hover:bg-gray-600 ${
-                      selectedDocName === doc.name ? 'bg-gray-600' : 'bg-gray-700'
-                    }`}
+                    className={`flex justify-between items-center px-3 py-3 rounded cursor-pointer hover:bg-gray-600 ${selectedDocName === doc.name ? 'bg-gray-600' : 'bg-gray-700'
+                      }`}
                   >
                     <div>
                       <div className="font-medium">
@@ -191,7 +191,7 @@ export default function App() {
 
           {selectedMetadata && (
             <div className="mt-6 bg-gray-700 p-4 rounded">
-              
+
               <h3 className="text-lg font-semibold text-blue-400 mb-3">
                 Document Intelligence
               </h3>
@@ -254,7 +254,11 @@ export default function App() {
                     </div>
                   )}
 
-                  <p className="whitespace-pre-wrap">{msg.text}</p>
+                  <div className="prose prose-invert max-w-none">
+                    <ReactMarkdown>
+                      {msg.text}
+                    </ReactMarkdown>
+                  </div>
 
                   {msg.sources && msg.sources.length > 0 && (
                     <div className="mt-3 pt-3 border-t border-gray-600 text-xs text-gray-300 font-mono">
