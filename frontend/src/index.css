@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add this to make the background dark by default to match our UI */
+body {
+  background-color: #111827; 
+}

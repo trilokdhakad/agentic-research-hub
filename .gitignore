@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# ChromaDB
+backend/chroma_db/
+
+# Uploaded documents
+backend/data/
+
+# Generated metadata
+backend/metadata/
+
+# Environment variables
+.env
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

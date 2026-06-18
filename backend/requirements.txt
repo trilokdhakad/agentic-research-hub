@@ -1,0 +1,22 @@
+# Web Framework
+fastapi>=0.104.0
+uvicorn>=0.24.0
+python-multipart>=0.0.6
+
+# LangChain Ecosystem
+langchain>=0.1.0
+langchain-core>=0.1.52
+langchain-community>=0.0.38
+langchain-ollama>=0.0.1
+langchain-chroma>=0.1.1
+langchain-huggingface>=0.0.3
+
+# AI Orchestration
+langgraph>=0.0.26
+
+# Vector Store & Embeddings
+chromadb>=0.5.0
+sentence-transformers>=2.7.0
+
+# Document Parsing
+pypdf>=4.2.0
