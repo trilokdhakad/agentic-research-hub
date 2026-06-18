@@ -362,11 +362,11 @@ Designed the system to run entirely on local hardware without requiring cloud-ho
 
 ## Knowledge Base & Document Management
 
-![Knowledge Base](screenshots/knowledge-base.png)
+![Knowledge Base](screenshots/upload-and-kb.png)
 
 ## Document Intelligence
 
-![Document Intelligence](screenshots/document-intelligence.png)
+![Document Intelligence](screenshots/metadata-viewer.png)
 
 ## Planner Agent & Answer Generation
 
