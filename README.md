@@ -269,7 +269,6 @@ Designed the system to run entirely on local hardware without requiring cloud-ho
 
 # 🔮 Future Improvements
 
-* Metadata-backed question answering
 * Intent classification and intelligent routing
 * Hybrid search (semantic + keyword retrieval)
 * Conversation memory
