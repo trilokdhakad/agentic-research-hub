@@ -1,4 +1,4 @@
-```markdown
+
 # Agentic Research Hub
 
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?logo=github)](https://github.com/trilokdhakad/agentic-research-hub)
