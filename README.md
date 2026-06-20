@@ -1,3 +1,4 @@
+```markdown
 # Agentic Research Hub
 
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?logo=github)](https://github.com/trilokdhakad/agentic-research-hub)
@@ -60,10 +61,6 @@ Unlike traditional RAG systems that directly retrieve and generate responses, th
 
 ---
 
-
-
-
-````
 # 🏗️ Architecture
 
 ```text
@@ -94,8 +91,8 @@ Unlike traditional RAG systems that directly retrieve and generate responses, th
 ┌────────────────────┐          ┌────────────────────┐
 │ Metadata Store     │          │ ChromaDB           │
 └────────────────────┘          └─────────┬──────────┘
-                                           │
-                                           ▼
+                                          │
+                                          ▼
 
                               ┌────────────────────┐
                               │ User Question      │
@@ -130,6 +127,7 @@ Unlike traditional RAG systems that directly retrieve and generate responses, th
                               ┌────────────────────┐
                               │ Final Answer       │
                               └────────────────────┘
+
 ```
 
 ---
@@ -153,6 +151,7 @@ Writer Agent
     │
     ▼
 Answer + Sources + Strategy
+
 ```
 
 ---
@@ -192,7 +191,6 @@ Answer + Sources + Strategy
 # 📂 Project Structure
 
 ```text
-```text
 agentic-research-hub/
 │
 ├── backend/
@@ -217,6 +215,7 @@ agentic-research-hub/
 ├── screenshots/
 ├── README.md
 └── .gitignore
+
 ```
 
 ---
@@ -225,31 +224,34 @@ agentic-research-hub/
 
 ## Prerequisites
 
-- Docker Desktop
-- Ollama
-- Gemma 2B model
+* Docker Desktop
+* Ollama
+* Gemma 2B model
 
 Pull the model:
 
 ```bash
 ollama pull gemma:2b
+
 ```
 
 Run the application:
 
 ```bash
 docker compose up --build
+
 ```
 
 Services:
 
-- Frontend: http://localhost:5173
-- Backend:  http://localhost:8000
+* Frontend: http://localhost:5173
+* Backend:  http://localhost:8000
 
 Docker Hub Image:
 
 ```bash
 docker pull tt49139/agentic-research-hub:latest
+
 ```
 
 ---
@@ -270,18 +272,21 @@ Pull the required model:
 
 ```bash
 ollama pull gemma:2b
+
 ```
 
 Verify installation:
 
 ```bash
 ollama list
+
 ```
 
 Start Ollama:
 
 ```bash
 ollama serve
+
 ```
 
 ---
@@ -302,12 +307,14 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 uvicorn main:app --reload
+
 ```
 
 Backend:
 
 ```text
 http://localhost:8000
+
 ```
 
 ---
@@ -320,12 +327,14 @@ cd frontend
 npm install
 
 npm run dev
+
 ```
 
 Frontend:
 
 ```text
 http://localhost:5173
+
 ```
 
 ---
@@ -349,6 +358,7 @@ Chunking
             │
             ▼
         ChromaDB
+
 ```
 
 ## Question Answering Phase
@@ -370,6 +380,7 @@ Writer Agent
     │
     ▼
 Answer + Sources
+
 ```
 
 ---
@@ -414,19 +425,11 @@ Designed the system to run entirely on local hardware without requiring cloud-ho
 
 ## Knowledge Base & Document Management
 
-![Knowledge Base](screenshots/upload-and-kb.png)
-
 ## Document Intelligence
-
-![Document Intelligence](screenshots/metadata-viewer.png)
 
 ## Planner Agent & Answer Generation
 
-![Planner Output](screenshots/planner-and-answer/planner-and-answer1.png)
-
 ## System Architecture
-
-![Architecture](screenshots/architecture.png)
 
 ---
 
@@ -440,4 +443,7 @@ Built to explore:
 * Local LLM Deployment
 * Document Intelligence Systems
 * Metadata-Aware Retrieval
+
+```
+
 ```
