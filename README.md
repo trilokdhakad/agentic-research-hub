@@ -425,11 +425,19 @@ Designed the system to run entirely on local hardware without requiring cloud-ho
 
 ## Knowledge Base & Document Management
 
+![Knowledge Base](screenshots/upload-and-kb.png)
+
 ## Document Intelligence
+
+![Document Intelligence](screenshots/metadata-viewer.png)
 
 ## Planner Agent & Answer Generation
 
+![Planner Output](screenshots/planner-and-answer/planner-and-answer1.png)
+
 ## System Architecture
+
+![Architecture](screenshots/architecture.png)
 
 ---
 
