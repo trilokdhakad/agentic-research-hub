@@ -60,10 +60,13 @@ Unlike traditional RAG systems that directly retrieve and generate responses, th
 
 ---
 
+
+
+
+````markdown
 # 🏗️ Architecture
 
 ```text
-```
                     ┌────────────────────┐
                     │ PDF / TXT Document │
                     └─────────┬──────────┘
@@ -127,7 +130,6 @@ Unlike traditional RAG systems that directly retrieve and generate responses, th
                               ┌────────────────────┐
                               │ Final Answer       │
                               └────────────────────┘
-```
 
 ---
 
