@@ -7,6 +7,8 @@ import {
   Trash2
 } from 'lucide-react'
 
+const API_URL = import.meta.env.VITE_API_URL
+
 export default function App() {
   const [file, setFile] = useState(null)
   const [query, setQuery] = useState('')
@@ -20,7 +22,7 @@ export default function App() {
   const fetchDocuments = async () => {
     try {
       const res = await axios.get(
-        'http://localhost:8000/documents/'
+        `${API_URL}/documents/`
       )
 
       setDocuments(res.data.documents)
@@ -32,7 +34,7 @@ export default function App() {
   const deleteDocument = async (filename) => {
     try {
       await axios.delete(
-        `http://localhost:8000/documents/${filename}`
+        `${API_URL}/documents/${filename}`
       )
 
       // If the deleted document was selected, clear metadata
@@ -57,7 +59,7 @@ export default function App() {
 
     try {
       const res = await axios.get(
-        `http://localhost:8000/metadata/${filename}`
+        `${API_URL}/metadata/${filename}`
       )
 
       setSelectedMetadata(res.data)
@@ -80,7 +82,7 @@ export default function App() {
     formData.append('file', file)
 
     try {
-      await axios.post('http://localhost:8000/upload/', formData)
+      await axios.post(`${API_URL}/upload/`, formData)
       fetchDocuments()
       setUploadStatus('success')
       setTimeout(() => setUploadStatus('idle'), 3000) // Reset after 3 seconds
@@ -100,7 +102,7 @@ export default function App() {
     setLoading(true)
 
     try {
-      const res = await axios.post('http://localhost:8000/ask/', { question: query })
+      const res = await axios.post(`${API_URL}/ask/`, { question: query })
       setChat([...newChat, {
         type: 'bot',
         text: res.data.answer,

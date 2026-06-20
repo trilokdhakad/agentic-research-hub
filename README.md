@@ -1,3 +1,4 @@
+```markdown
 # Agentic Research Hub
 
 An Agentic Retrieval-Augmented Generation (RAG) system built using **LangGraph**, **FastAPI**, **React**, **ChromaDB**, and **Ollama**.
@@ -5,6 +6,10 @@ An Agentic Retrieval-Augmented Generation (RAG) system built using **LangGraph**
 The system allows users to upload PDF and TXT documents, automatically extract document intelligence (title, summary, and keywords), generate embeddings, store semantic representations in ChromaDB, and query the knowledge base through a metadata-aware multi-agent workflow.
 
 Unlike traditional RAG systems that directly retrieve and generate responses, this project introduces a planning layer that helps guide retrieval before answer generation. The retrieval pipeline combines document-level intelligence with chunk-level semantic search, enabling both high-level understanding and fact-grounded question answering.
+
+🔗 Links  
+**GitHub Repository:** https://github.com/trilokdhakad/agentic-research-hub  
+**Docker Image:** https://hub.docker.com/r/tt49139/agentic-research-hub
 
 ---
 
@@ -42,6 +47,13 @@ Unlike traditional RAG systems that directly retrieve and generate responses, th
 * Local vector database using ChromaDB
 * HuggingFace sentence-transformer embeddings
 * No external API dependency required
+
+## 🐳 Docker Support
+
+* Dockerized FastAPI backend
+* Dockerized React frontend
+* One-command deployment using Docker Compose
+* Reproducible local development environment
 
 ---
 
@@ -193,10 +205,53 @@ agentic-research-hub/
 │   ├── package.json
 │   └── vite.config.js
 │
+├── docker-compose.yml
+│
+├── backend/
+│   ├── Dockerfile
+│   ├── .dockerignore
+│
+├── frontend/
+│   ├── Dockerfile
+│   ├── .dockerignore
+│
 ├── screenshots/
 │
 ├── README.md
 └── .gitignore
+```
+
+---
+
+# 🐳 Docker Deployment
+
+## Prerequisites
+
+- Docker Desktop
+- Ollama
+- Gemma 2B model
+
+Pull the model:
+
+```bash
+ollama pull gemma:2b
+```
+
+Run the application:
+
+```bash
+docker compose up --build
+```
+
+Services:
+
+- Frontend: http://localhost:5173
+- Backend:  http://localhost:8000
+
+Docker Hub Image:
+
+```bash
+docker pull tt49139/agentic-research-hub:latest
 ```
 
 ---
@@ -353,7 +408,6 @@ Designed the system to run entirely on local hardware without requiring cloud-ho
 * Multi-Document Reasoning
 * Citation Highlighting
 * Streaming Responses
-* Dockerized Deployment
 * Cloud-Hosted LLM Backend Option
 
 ---
@@ -388,3 +442,4 @@ Built to explore:
 * Local LLM Deployment
 * Document Intelligence Systems
 * Metadata-Aware Retrieval
+```

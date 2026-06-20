@@ -2,6 +2,7 @@
 __pycache__/
 *.pyc
 venv/
+backend/venv/
 
 # ChromaDB
 backend/chroma_db/

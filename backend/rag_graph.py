@@ -21,7 +21,10 @@ class GraphState(TypedDict):
 def planner_node(state: GraphState):
     question = state["question"]
 
-    llm = OllamaLLM(model="gemma:2b")
+    llm = OllamaLLM(
+        model="gemma:2b",
+        base_url="http://host.docker.internal:11434"
+    )
 
     prompt = PromptTemplate(
         template="""
@@ -147,7 +150,10 @@ def generate_node(state: GraphState):
     context = state["context"]
     plan = state["plan"]
 
-    llm = OllamaLLM(model="gemma:2b")
+    llm = OllamaLLM(
+        model="gemma:2b",
+        base_url="http://host.docker.internal:11434"
+    )
 
     prompt = PromptTemplate(
         template="""

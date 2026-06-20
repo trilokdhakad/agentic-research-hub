@@ -5,7 +5,11 @@ import re
 
 def generate_metadata(chunks, filename):
     # 1. Force Ollama into JSON mode natively
-    llm = OllamaLLM(model="gemma:2b", format="json")
+    llm = OllamaLLM(
+        model="gemma:2b",
+        format="json",
+        base_url="http://host.docker.internal:11434"
+    )
 
     content = "\n".join(
         chunk.page_content
