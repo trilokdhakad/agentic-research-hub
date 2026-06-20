@@ -63,7 +63,7 @@ Unlike traditional RAG systems that directly retrieve and generate responses, th
 
 
 
-````markdown
+````
 # 🏗️ Architecture
 
 ```text
@@ -130,6 +130,7 @@ Unlike traditional RAG systems that directly retrieve and generate responses, th
                               ┌────────────────────┐
                               │ Final Answer       │
                               └────────────────────┘
+```
 
 ---
 
@@ -191,6 +192,7 @@ Answer + Sources + Strategy
 # 📂 Project Structure
 
 ```text
+```text
 agentic-research-hub/
 │
 ├── backend/
@@ -201,28 +203,18 @@ agentic-research-hub/
 │   ├── metadata_extractor.py
 │   ├── metadata_store.py
 │   ├── requirements.txt
-│   ├── chroma_db/
-│   ├── data/
-│   └── metadata/
+│   ├── Dockerfile
+│   └── .dockerignore
 │
 ├── frontend/
 │   ├── src/
 │   ├── public/
 │   ├── package.json
-│   └── vite.config.js
+│   ├── Dockerfile
+│   └── .dockerignore
 │
 ├── docker-compose.yml
-│
-├── backend/
-│   ├── Dockerfile
-│   ├── .dockerignore
-│
-├── frontend/
-│   ├── Dockerfile
-│   ├── .dockerignore
-│
 ├── screenshots/
-│
 ├── README.md
 └── .gitignore
 ```
