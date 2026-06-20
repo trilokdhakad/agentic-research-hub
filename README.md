@@ -1,5 +1,7 @@
-```markdown
 # Agentic Research Hub
+
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?logo=github)](https://github.com/trilokdhakad/agentic-research-hub)
+[![Docker Hub](https://img.shields.io/badge/DockerHub-Image-2496ED?logo=docker&logoColor=white)](https://hub.docker.com/r/tt49139/agentic-research-hub)
 
 An Agentic Retrieval-Augmented Generation (RAG) system built using **LangGraph**, **FastAPI**, **React**, **ChromaDB**, and **Ollama**.
 
@@ -7,9 +9,10 @@ The system allows users to upload PDF and TXT documents, automatically extract d
 
 Unlike traditional RAG systems that directly retrieve and generate responses, this project introduces a planning layer that helps guide retrieval before answer generation. The retrieval pipeline combines document-level intelligence with chunk-level semantic search, enabling both high-level understanding and fact-grounded question answering.
 
-🔗 Links  
-**GitHub Repository:** https://github.com/trilokdhakad/agentic-research-hub  
-**Docker Image:** https://hub.docker.com/r/tt49139/agentic-research-hub
+## 🔗 Links
+
+- **GitHub Repository:** https://github.com/trilokdhakad/agentic-research-hub
+- **Docker Image:** https://hub.docker.com/r/tt49139/agentic-research-hub
 
 ---
 
@@ -60,6 +63,7 @@ Unlike traditional RAG systems that directly retrieve and generate responses, th
 # 🏗️ Architecture
 
 ```text
+```
                     ┌────────────────────┐
                     │ PDF / TXT Document │
                     └─────────┬──────────┘
